@@ -1,9 +1,23 @@
 import styled from "@emotion/styled";
-import {Flex} from '@chakra-ui/react'
- const Banner= styled(Flex)`  
+import { Flex } from "@chakra-ui/react";
+import { css } from "@emotion/react";
+import Image from "next/image";
+
+export const BannerImage = styled(Image)`
+  object-fit: cover;
+  z-index:-1;
+  transform: scale(1.1);
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+`;
+
+const Banner = styled(Flex)`
   min-height: 100vh;
   position: relative;
-  background:#222831;
+  width: 100%;
 `;
 
 export default Banner;
