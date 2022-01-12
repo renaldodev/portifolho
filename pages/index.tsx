@@ -1,14 +1,18 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import {Text,Heading} from '@chakra-ui/react'
 import ParticlesBaner from '../components/ParticlesBaner'
+import Banner from '../components/Banner'
+
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
+      <Banner justify={'center'} align={'center'}>
+        <Text>Renaldo mateus</Text>
+        <Heading color="black" size='3xl' fontWeight={'extrabold'}>Renaldo Mateus</Heading>
      <ParticlesBaner/> 
-     <h1>Renaldo</h1>
-    </div>
+      </Banner>
+    </>
   )
 }
 
