@@ -15,5 +15,5 @@ export default function Layout({ children, location }: ILayoutProps) {
       return;
     }
   }, [isLoading]);
-  return <div>{isLoading && isHome ? <Loader finnesheLoading={()=>setIsLoading(false)} /> : children}</div>;
+  return <div>{isLoading && isHome ? <Loader fineshLoading={()=>setIsLoading(false)} /> : children}</div>;
 }

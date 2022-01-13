@@ -6,14 +6,14 @@ import Banner, { BannerImage } from "../components/Banner";
 const Home: NextPage = () => {
   return (
     <>
-      <Banner justify={"center"} align={"center"}>
+      <Banner justify={"center"} align={"center"} bgColor={'brand.900'}>
         <ParticlesBaner />
-        <BannerImage
-          src={"https://i.ibb.co/GsGfFYp/keyboard-with-hands.jpg"}
-          layout="fill"
-        />
+          {/* <BannerImage
+            src={"https://i.ibb.co/GsGfFYp/keyboard-with-hands.jpg"}
+            layout="fill"
+          /> */}
         <Text>Renaldo mateus</Text>
-        <Heading color="whiteAlpha.800" size="3xl" fontWeight={"extrabold"}>
+        <Heading color="brand.500" size="3xl" fontWeight={"extrabold"}>
           Renaldo Mateus
         </Heading>
       </Banner>
