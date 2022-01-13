@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Stack, Link } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 const EmailStyles = styled(Stack)`
+  z-index: 99;
   align-items: center;
   position: fixed;
   bottom: 0;
@@ -10,18 +11,18 @@ const EmailStyles = styled(Stack)`
     content: "";
     width: 1px;
     height: 90px;
-    background: #e6f1ff
+    background: #e6f1ff;
   }
 
-  p{
-      transform: rotate(90deg);
-      cursor:pointer;
-      font-size:14px;
-      margin-bottom: 135px;
-      &:hover{
-          color:#aefeff;
-          transform:rotate(90deg) translateX(3px);
-      }
+  p {
+    transform: rotate(90deg);
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 135px;
+    &:hover {
+      color: #aefeff;
+      transform: rotate(90deg) translateX(3px);
+    }
   }
 `;
 

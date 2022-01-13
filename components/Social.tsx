@@ -3,6 +3,7 @@ import { Stack,Link } from "@chakra-ui/react";
 import { FaGithub, FaLinkedinIn, FaDiscord, FaInstagram,FaTwitter } from "react-icons/fa";
 
 const SocialStyles = styled(Stack)`
+  z-index: 99;
   a svg{
      margin-bottom :20px ;
      width: 22px;
