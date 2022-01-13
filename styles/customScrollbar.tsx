@@ -4,7 +4,11 @@ import {Global} from '@emotion/react'
 export default function CustomScrollBar(){
     return (
         <Global styles={
-            `::-webkit-scrollbar {
+            `
+            *{
+                transition:all 300ms ease-in;
+            }
+            ::-webkit-scrollbar {
                 width: 6px;
               }
               

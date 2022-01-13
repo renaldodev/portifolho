@@ -11,6 +11,7 @@ export const BannerImage = styled(Image)`
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
+
 `;
 
 const Banner = styled(Flex)`
