@@ -16,6 +16,12 @@ const Home: NextPage = () => {
         <Heading color="brand.500" size="3xl" fontWeight={"extrabold"}>
           Renaldo Mateus
         </Heading>
+        <Heading color="brand.500" size="3xl" fontWeight={"extrabold"}>
+          Renaldo Mateus
+        </Heading>
+        <Heading color="brand.500" size="3xl" fontWeight={"extrabold"}>
+          Renaldo Mateus
+        </Heading>
       </Banner>
       <Link href="/about">Abaut</Link>
     </>

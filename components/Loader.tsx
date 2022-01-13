@@ -56,7 +56,7 @@ export default function Loader({ fineshLoading }: ILoaderProps) {
         targets: '.loader',
         duration: 200,
         easing: 'easeInOutQuart',
-        opacity: 0.2,
+        opacity: 0,
         zIndex: -1,
       });
   };
