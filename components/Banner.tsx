@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Flex } from "@chakra-ui/react";
-import { css } from "@emotion/react";
 import Image from "next/image";
 
 export const BannerImage = styled(Image)`
