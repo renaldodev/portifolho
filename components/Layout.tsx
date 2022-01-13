@@ -21,6 +21,18 @@ export default function Layout({ children, location }: ILayoutProps) {
     if (isLoading) {
       return;
     }
+    const handleExternalLinks = () => {
+      const allLinks = Array.from(document.querySelectorAll('a'));
+      if (allLinks.length > 0) {
+        allLinks.forEach(link => {
+          if (link.host !== window.location.host) {
+            link.setAttribute('rel', 'noopener noreferrer');
+            link.setAttribute('target', '_blank');
+          }
+        });
+      }
+    };
+    handleExternalLinks()
   }, [isLoading]);
   return (
     <LayoutStyles>
@@ -29,7 +41,7 @@ export default function Layout({ children, location }: ILayoutProps) {
       ) : (
         <>
           <Head hash={location} />
-          <Container as="main" maxW={"container.lg"}>
+          <Container as="main" maxW={['container.lg']} px={['20px','50px','65px',null]}>
             <Social />
             <Email />
             {children}

@@ -3,7 +3,7 @@ import Particles from "react-tsparticles";
 import styled from "@emotion/styled";
 
 const ParticlesWrapper = styled.div`  
-   position:absolute;
+  // position:absolute;
   /* z-index: -1; */
 `;
 
@@ -22,7 +22,7 @@ export default function ParticlesBaner() {
           interactivity: {
             events: {
               onClick: {
-                enable: true,
+                enable: false,
                 mode: "push",
               },
               onHover: {
@@ -49,7 +49,7 @@ export default function ParticlesBaner() {
           },
           particles: {
             color: {
-              value: "#00ADB5",
+              value: ["#5bc0eb", "#fde74c", "#9bc53d", "#e55934", "#fa7921"]
             },
             links: {
               color: "#00ADB5",
@@ -66,7 +66,7 @@ export default function ParticlesBaner() {
               enable: true,
               outMode: "bounce",
               random: false,
-              speed: 6,
+              speed: 2,
               straight: false,
             },
             number: {
@@ -80,7 +80,7 @@ export default function ParticlesBaner() {
               value: 0.5,
             },
             shape: {
-              type: "circle",
+              type: "square",
             },
             size: {
               random: true,

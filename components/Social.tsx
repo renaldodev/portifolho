@@ -35,7 +35,7 @@ export default function Social() {
     { icon: <FaDiscord />, link: "https://discord.com" },
     { icon: <FaInstagram />, link: "https://instagram.com" },
   ];
-  return <SocialStyles ml="40px">
+  return <SocialStyles ml="40px" display={['none',null,null,'flex']}>
       {social.map(item=>(
        <Link href={item.link} key={item.link}>{item.icon}</Link>
       ))}

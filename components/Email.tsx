@@ -28,7 +28,7 @@ const EmailStyles = styled(Stack)`
 
 export default function Email() {
   return (
-    <EmailStyles mr="-70px">
+    <EmailStyles mr="-70px" display={['none',null,null,'flex']}>
       <Heading as="p">renaldomateus77.dev@gmail.com</Heading>
     </EmailStyles>
   );
