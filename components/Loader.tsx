@@ -44,7 +44,7 @@ export default function Loader({ fineshLoading }: ILoaderProps) {
     });
     tl.add({
       targets: ".wrapper",
-      duration: 1000,
+      duration: 1500,
       rotate: "360deg",
     }).add({
         targets: '.wrapper',
@@ -54,9 +54,9 @@ export default function Loader({ fineshLoading }: ILoaderProps) {
         rotate: "-360deg",
       }).add({
         targets: '.loader',
-        duration: 1000,
+        duration: 200,
         easing: 'easeInOutQuart',
-        opacity: 0,
+        opacity: 0.2,
         zIndex: -1,
       });
   };
@@ -69,7 +69,7 @@ export default function Loader({ fineshLoading }: ILoaderProps) {
   return (
     <StyledLoader className="loader" bgColor={"brand.900"} isMounted={isMounted}>
       <div className="wrapper">
-        <Image src={"http://localhost:3000/logo.svg"} alt="logo" />
+        <Image src={`/Infinity.svg`} alt="logo" />
       </div>
     </StyledLoader>
   );
