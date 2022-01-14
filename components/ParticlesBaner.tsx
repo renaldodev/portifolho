@@ -52,7 +52,7 @@ export default function ParticlesBaner() {
               value: ["#5bc0eb", "#fde74c", "#9bc53d", "#e55934", "#fa7921"]
             },
             links: {
-              color: "#00ADB5",
+              color: "#35858B",
               distance: 150,
               enable: true,
               opacity: 0.5,
