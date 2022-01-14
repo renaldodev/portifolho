@@ -44,7 +44,7 @@ export default function Head({ hash }: { hash: Router }) {
   const headHeight = ref.current?.clientHeight;
 
   const handleScroll = () => {
-    setShuldScrollTo(window.scrollY < headHeight! + 70);
+    setShuldScrollTo(window.scrollY < headHeight! + 10);
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
