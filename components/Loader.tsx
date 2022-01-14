@@ -20,7 +20,7 @@ const StyledLoader = styled(Box)<StyledLoadType>`
   .wrapper {
     max-width: 150px;
     width: 100%;
-    opacity: ${props => (props.isMounted? 1 : 0)};
+    opacity: ${props => (props.ismounted? 1 : 0)};
     svg {
       display: block;
       width: 100%;
@@ -67,7 +67,7 @@ export default function Loader({ fineshLoading }: ILoaderProps) {
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <StyledLoader className="loader" bgColor={"brand.900"} isMounted={isMounted}>
+    <StyledLoader className="loader" bgColor={"brand.900"} ismounted={isMounted}>
       <div className="wrapper">
         <Image src={`/Infinity.svg`} alt="logo" />
       </div>

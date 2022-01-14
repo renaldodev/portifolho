@@ -2,6 +2,7 @@ import { Container, Box } from "@chakra-ui/react";
 import { Router } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import { handleExternalLinks } from "@util/index";
 import Loader from "./Loader";
 import Social from "./Social";
 import Email from "./Email";
@@ -12,28 +13,31 @@ interface ILayoutProps {
   location: Router;
 }
 
-const LayoutStyles = styled(Box)``;
+const LayoutStyles = styled(Box)`
+position: relative;
+`;
 
 export default function Layout({ children, location }: ILayoutProps) {
   const isHome = location.pathname === "/";
   const [isLoading, setIsLoading] = useState(isHome);
+
   useEffect(() => {
     if (isLoading) {
       return;
-    }
-    const handleExternalLinks = () => {
-      const allLinks = Array.from(document.querySelectorAll('a'));
-      if (allLinks.length > 0) {
-        allLinks.forEach(link => {
-          if (link.host !== window.location.host) {
-            link.setAttribute('rel', 'noopener noreferrer');
-            link.setAttribute('target', '_blank');
-          }
-        });
+    } 
+    let id = location.asPath.slice(2);
+    id = id.charAt(0).toUpperCase() + id.substring(1);
+    console.log(id);
+    const el = document.getElementById(id);
+    setTimeout(() => {
+      if (el) {
+        el.scrollIntoView();
+        el.focus();
       }
-    };
-    handleExternalLinks()
-  }, [isLoading]);
+    }, 0);
+
+    handleExternalLinks();
+  }, [isLoading,location.asPath]);
   return (
     <LayoutStyles>
       {isLoading && isHome ? (
@@ -41,7 +45,11 @@ export default function Layout({ children, location }: ILayoutProps) {
       ) : (
         <>
           <Head hash={location} />
-          <Container as="main" maxW={['container.lg']} px={['20px','50px','65px',null]}>
+          <Container
+            as="main"
+            maxW={["container.lg"]}
+            px={["20px", "50px", "65px", null]}
+          >
             <Social />
             <Email />
             {children}

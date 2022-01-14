@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
-enum DIRECTION {
+export enum DIRECTION {
   UP = "up",
   DOWN = "down",
 }
 
-export default function useScrollDirection() {
-  const [direction, setDirection] = useState<DIRECTION>(DIRECTION.UP);
+export default function useScrollDirection(
+  initialDirection: DIRECTION | null
+) {
+  const [direction, setDirection] = useState<DIRECTION>(
+    initialDirection ? initialDirection : DIRECTION.DOWN
+  );
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
@@ -16,7 +20,7 @@ export default function useScrollDirection() {
       lastScrollY = scrollY > 0 ? scrollY : 0;
     };
     const scroll = () => {
-        window.requestAnimationFrame(updateScrollDirection)
+      window.requestAnimationFrame(updateScrollDirection);
     };
     window.addEventListener("scroll", scroll);
     return () => window.removeEventListener("scroll", scroll);

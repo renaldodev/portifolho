@@ -1,99 +1,71 @@
-import { ReactNode, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
-import {
-  Flex,
-  Box,
-  Link as LinkChakra,
-  Image,
-  Menu,
-  MenuItem,
-  Heading,
-} from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { Router } from "next/router";
-const HeadStyles = styled(Flex)`
-  backdrop-filter: blur(20px);
+import { Nav } from "@components/index";
+import { useScrollDirection } from "@hooks/index";
+import { DIRECTION } from "@hooks/useScrollDirection";
+import { css } from "@emotion/react";
+
+const HeadStyles = styled(Flex)<{
+  directionscroll?: DIRECTION;
+  shouldscroll?: boolean;
+  headheight?: number;
+}>`
+ position: fixed;
+ ${props=>!props.shouldscroll&& css`
+    backdrop-filter: blur(20px);
+    box-shadow:0 10px 30px -10px rgba(0,0,0,.3);
+    background: "#021316";
+ `}
+ transition: all 300ms ease;
+  width: 100%;
+  top: 0;
+  ${(props) =>
+    !props.shouldscroll && props.directionscroll === DIRECTION.DOWN &&
+    css`
+      transform: translateY(${props.headheight!*-1}px);
+    `}
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
-  nav li:focus {
-    border: 1px solid #aefeff;
-    background: transparent;
-  }
+  
+  ${(props) =>
+    !props.shouldscroll &&props.directionscroll === DIRECTION.UP &&
+    css`
+      transform: translateY(0);
+    `}
 `;
 
-interface IHeadProps {
-  hash: Router;
-}
+export default function Head({ hash }: { hash: Router }) {
+  const direction = useScrollDirection(null);
+  const [shuldScollTo, setShuldScrollTo] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const headHeight = ref.current?.clientHeight;
 
-interface ILinkItemPros {
-  children: ReactNode;
-  textLight?: string;
-  href: string;
-  isActive?: boolean;
-}
-const LinkItem = ({ children, textLight, href, isActive }: ILinkItemPros) => {
-  return (
-    <MenuItem as="li" border={isActive ? "1px solid #AEFEFF" : "transparent"}>
-      <Link href={href}>
-        <LinkChakra as="span" display={"flex"} alignItems={"center"}>
-          <Heading fontSize={"sm"} color={"brand.600"}>
-            {textLight!}
-          </Heading>
-          {children}
-        </LinkChakra>
-      </Link>
-    </MenuItem>
-  );
-};
-
-export default function Head({ hash }: IHeadProps) {
-  const isHome = hash?.asPath === "/";
+  const handleScroll = () => {
+    setShuldScrollTo(window.scrollY < headHeight!+10);
+  };
   useEffect(() => {
-    if (isHome) {
-      return;
-    }
-    const id = hash.asPath.slice(2);
-    const el = document.getElementById(id);
-    setTimeout(() => {
-      if (el) {
-        el.scrollIntoView();
-        el.focus();
-      }
-    }, 1000);
-  }, [hash?.asPath]);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <HeadStyles px="40px" zIndex={"100"}>
+    <HeadStyles
+      px="40px"
+      zIndex={"100"}
+      directionscroll={direction}
+      shouldscroll={shuldScollTo}
+      ref={ref}
+      headheight={headHeight}
+    >
       <Link href="/">
-        <LinkChakra>
-          <Image src="/logo.svg" alt="Logo" maxW={"60px"} />
-        </LinkChakra>
+        <Image src="/logo.svg" alt="Logo" maxW={"60px"} cursor="pointer" />
       </Link>
-      <Box as={"nav"}>
-        <Menu>
-          <LinkItem
-            textLight="01."
-            href="/#About"
-            isActive={hash?.asPath === "/#About"}
-          >
-            About
-          </LinkItem>
-          <LinkItem
-            textLight="02."
-            href="/#Project"
-            isActive={hash?.asPath === "/#Project"}
-          >
-            Project
-          </LinkItem>
-          <LinkItem
-            textLight="03."
-            href="/#Contact"
-            isActive={hash?.asPath === "/#Contact"}
-          >
-            Contact
-          </LinkItem>
-        </Menu>
-      </Box>
+      <Nav path={hash.asPath} />
     </HeadStyles>
   );
 }

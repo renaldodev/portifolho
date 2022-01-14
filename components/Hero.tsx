@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { Stack,Box,Divider} from "@chakra-ui/react";
 import { Heading, Text } from "@chakra-ui/react";
-const HeroStyles = styled(Stack)``;
+const HeroStyles = styled(Stack)`
+ margin-top: 120px;
+`;
 
 export default function Hero() {
   return (
