@@ -1,10 +1,16 @@
-import {Global} from '@emotion/react'
+import { Global } from "@emotion/react";
 
-
-export default function CustomScrollBar(){
-    return (
-        <Global styles={
-            `
+export default function CustomScrollBar() {
+  return (
+    <Global
+      styles={`
+            html{
+                scroll-behavior: smooth;
+            }
+            body{
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+            }
             *{
                 transition:all 300ms ease-in;
             }
@@ -23,7 +29,7 @@ export default function CustomScrollBar(){
                 background: #35858B; 
                 border-radius:3px; 
             }
-            `
-        }/>
-    )
+            `}
+    />
+  );
 }

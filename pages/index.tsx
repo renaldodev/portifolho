@@ -7,7 +7,10 @@ import Hero from "@components/Hero";
 import About from "@components/About";
 import Project from "@components/Project";
 import Contact from "@components/Contact";
+import useScrollDirection from "@hooks/useScrollDirection";
 const Home: NextPage = () => {
+  const direction=useScrollDirection()
+  console.log(direction)
   return (
     <>
       <Banner>

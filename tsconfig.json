@@ -17,10 +17,11 @@
     "baseUrl": "./",
     "paths": {
       "@components/*":["./components/*"],
-      "@styles/*":["./styles/*"]
+      "@styles/*":["./styles/*"],
+      "@hooks/*":["./hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "hooks/index.ts", "components/index.tsx"],
   "exclude": ["node_modules"],
 
 }
