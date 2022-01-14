@@ -14,7 +14,7 @@ const HeadStyles = styled(Flex)<{
   headheight?: number;
 }>`
  position: fixed;
- ${props=>!props.shouldscroll&& css`
+ ${props=> !props.shouldscroll&& css`
     backdrop-filter: blur(20px);
     box-shadow:0 10px 30px -10px rgba(0,0,0,.3);
     background: "#021316";
@@ -39,20 +39,19 @@ const HeadStyles = styled(Flex)<{
 
 export default function Head({ hash }: { hash: Router }) {
   const direction = useScrollDirection(null);
-  const [shuldScollTo, setShuldScrollTo] = useState<boolean>(false);
+  const [shuldScollTo, setShuldScrollTo] = useState<boolean>();
   const ref = useRef<HTMLDivElement>(null);
   const headHeight = ref.current?.clientHeight;
 
   const handleScroll = () => {
-    setShuldScrollTo(window.scrollY < headHeight!+10);
+    setShuldScrollTo(window.scrollY < headHeight! + 70);
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [shuldScollTo]);
   return (
     <HeadStyles
       px="40px"
