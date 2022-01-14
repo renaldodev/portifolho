@@ -27,7 +27,7 @@ export default function Layout({ children, location }: ILayoutProps) {
     } 
     let id = location.asPath.slice(2);
     id = id.charAt(0).toUpperCase() + id.substring(1);
-    console.log(id);
+  
     const el = document.getElementById(id);
     setTimeout(() => {
       if (el) {
