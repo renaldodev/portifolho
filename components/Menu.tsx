@@ -28,8 +28,8 @@ const StylesMenu = styled(Flex)<{ isopen?: number }>`
 interface IMenuProps  {
   isopen: number;
 }
-const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen}, ref) => {
-  return (
+const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen}, ref) => 
+  (
     <StylesMenu
       bgColor={"brand.800"}
       shadow={"2xl"}
@@ -38,8 +38,11 @@ const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen}, ref) => {
       ref={ref}
     >
       <h1>Rui</h1>
+
+    
     </StylesMenu>
-  );
-});
+  ));
+
+Menu.displayName="Menu";
 
 export default Menu;
