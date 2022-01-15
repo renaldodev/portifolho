@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Flex, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { Router } from "next/router";
-import { Nav } from "@components/index";
+import { Nav,HamburgerMenuButton} from "@components/index";
 import { useScrollDirection } from "@hooks/index";
 import { DIRECTION } from "@hooks/useScrollDirection";
 import { css } from "@emotion/react";
@@ -65,6 +65,7 @@ export default function Head({ hash }: { hash: Router }) {
         <Image src="/logo.svg" alt="Logo" maxW={"60px"} cursor="pointer" />
       </Link>
       <Nav path={hash.asPath} />
+      <HamburgerMenuButton/>
     </HeadStyles>
   );
 }
