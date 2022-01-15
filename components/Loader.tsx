@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-import { Image, Flex, Box } from "@chakra-ui/react";
+import { Image,Box } from "@chakra-ui/react";
 import anime from "animejs";
 
 type StyledLoadType={
@@ -38,36 +38,37 @@ interface ILoaderProps {
 
 export default function Loader({ fineshLoading }: ILoaderProps) {
     const [isMounted, setIsMounted] = useState(false);
-  const animate = () => {
-    const tl = anime.timeline({
-      complete: () => fineshLoading(),
-    });
-    tl.add({
-      targets: ".wrapper",
-      duration: 1500,
-      rotate: "360deg",
-    }).add({
-        targets: '.wrapper',
-        delay:1000,
-        duration: 1500,
-        easing: 'easeInOutQuart',
-        rotate: "-360deg",
-      }).add({
-        targets: '.loader',
-        duration: 200,
-        easing: 'easeInOutQuart',
-        opacity: 0,
-        zIndex: -1,
-      });
-  };
+  
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
+    const animate = () => {
+      const tl = anime.timeline({
+        complete: () => fineshLoading(),
+      });
+      tl.add({
+        targets: ".wrapper",
+        duration: 1500,
+        rotate: "360deg",
+      }).add({
+          targets: '.wrapper',
+          delay:1000,
+          duration: 1500,
+          easing: 'easeInOutQuart',
+          rotate: "-360deg",
+        }).add({
+          targets: '.loader',
+          duration: 200,
+          easing: 'easeInOutQuart',
+          opacity: 0,
+          zIndex: -1,
+        });
+    };
     animate();
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <StyledLoader className="loader" bgColor={"brand.900"} ismounted={isMounted}>
+    <StyledLoader className="loader" bgColor={"brand.900"} ismounted={isMounted?1:0}>
       <div className="wrapper">
         <Image src={`/Infinity.svg`} alt="logo" />
       </div>

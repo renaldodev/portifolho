@@ -5,11 +5,12 @@ export default function useClickedOutside(
   handle: () => void
 ) {
   useEffect(() => {
+    const handleFC=()=>handle()
     const listner = (evt: Event) => {
       if (!ref.current || ref.current.contains(evt.target)) {
          return;
       } 
-      handle()
+      handleFC()
     };
 
     window.addEventListener("mousedown", listner);

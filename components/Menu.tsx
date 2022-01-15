@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Flex } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { HTMLAttributes, MutableRefObject, forwardRef } from "react";
+import {forwardRef } from "react";
 
 const StylesMenu = styled(Flex)<{ isopen?: number }>`
   position: fixed;
@@ -25,7 +25,7 @@ const StylesMenu = styled(Flex)<{ isopen?: number }>`
         `}
 `;
 
-interface IMenuProps{
+interface IMenuProps  {
   isopen: number;
 }
 const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen}, ref) => {

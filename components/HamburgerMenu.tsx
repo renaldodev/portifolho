@@ -70,11 +70,13 @@ const StylesButton = styled(Button)`
   }
 `;
 
-export default function HamburgerMenuButtom({isopen,onclick}:{isopen:number,onclick:()=>void}) {
+export default function HamburgerMenuButtom({isopen,onClick}:{isopen:number,onClick:()=>void}) {
   return (
-    <StylesButton onClick={onclick}
+    <StylesButton 
       display={[null, null, null, "none"]}
       _focus={{outlineColor:'brand.800'}}
+      onClick={onClick}
+      zIndex={'102'}
     >
       <ButtonIcon isopen={isopen} />
     </StylesButton>

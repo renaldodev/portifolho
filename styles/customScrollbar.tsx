@@ -22,7 +22,6 @@ export default function CustomScrollBar() {
               ::-webkit-scrollbar-track {
                 background: #072227; 
                 border-radius:3px; 
-                z-index:1;
               }
                
               /* Handle */
