@@ -1,7 +1,4 @@
-import { useState} from "react";
-
-
-import { Button, Flex } from "@chakra-ui/react";
+import { Button} from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
@@ -73,15 +70,13 @@ const StylesButton = styled(Button)`
   }
 `;
 
-export default function HamburgerMenuButtom() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function HamburgerMenuButtom({isopen,onclick}:{isopen:number,onclick:()=>void}) {
   return (
-    <StylesButton
+    <StylesButton onClick={onclick}
       display={[null, null, null, "none"]}
       _focus={{outlineColor:'brand.800'}}
-      onClick={() => setIsOpen(!isOpen)}
     >
-      <ButtonIcon isopen={isOpen ? 1 : 0} />
+      <ButtonIcon isopen={isopen} />
     </StylesButton>
   );
 }

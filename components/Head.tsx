@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, createRef } from "react";
 import styled from "@emotion/styled";
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image} from "@chakra-ui/react";
 import Link from "next/link";
 import { Router } from "next/router";
-import { Nav,HamburgerMenuButton} from "@components/index";
-import { useScrollDirection } from "@hooks/index";
+import { Nav,HamburgerMenuButton,Menu} from "@components/index";
+import { useScrollDirection ,useClickedOutside} from "@hooks/index";
 import { DIRECTION } from "@hooks/useScrollDirection";
 import { css } from "@emotion/react";
 
@@ -42,17 +42,26 @@ export default function Head({ hash }: { hash: Router }) {
   const [shuldScollTo, setShuldScrollTo] = useState<boolean>();
   const ref = useRef<HTMLDivElement>(null);
   const headHeight = ref.current?.clientHeight;
+  const [isOpen, setIsOpen] = useState(false);
 
+  const refmenu=createRef<HTMLDivElement>()
+  useClickedOutside(refmenu,()=>setIsOpen(false))
+  
   const handleScroll = () => {
     setShuldScrollTo(window.scrollY < headHeight! + 10);
   };
+  
+  
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [shuldScollTo]);
+  
+  
   return (
+   <>
     <HeadStyles
       px="40px"
       zIndex={"100"}
@@ -65,7 +74,9 @@ export default function Head({ hash }: { hash: Router }) {
         <Image src="/logo.svg" alt="Logo" maxW={"60px"} cursor="pointer" />
       </Link>
       <Nav path={hash.asPath} />
-      <HamburgerMenuButton/>
+      <HamburgerMenuButton isopen={isOpen?1:0} onclick={()=>setIsOpen(!isOpen)}/>
     </HeadStyles>
+    <Menu isopen={isOpen?1:0} ref={refmenu}/>
+   </>
   );
 }
