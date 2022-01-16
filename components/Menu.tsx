@@ -22,6 +22,7 @@ const StylesMenu = styled(Flex)<{ isopen?: number }>`
       : css`
           display: none;
           transform: translateX(min(75vw, 400px));
+          
         `}
 `;
 
