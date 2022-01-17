@@ -49,24 +49,13 @@ export default function Head({ hash }: { hash: Router }) {
   const headHeight = ref.current?.clientHeight;
   const [isOpen, setIsOpen] = useState(false);
   const refmenu = createRef<HTMLDivElement>();
-  const ele = document.getElementById("content");
 
   useClickedOutside(refmenu, () => {
-    ele?.classList.remove("blur")!;
     setIsOpen(false);
   });
 
   const toggleMenu = () => {
-    if (isOpen) {
-      
-      ele?.classList.remove("blur")!;
-
-      setIsOpen(false);
-    } else {
-      ele?.classList.add("blur")!;
-
-      setIsOpen(true);
-    }
+    setIsOpen(!isOpen);
   };
   useEffect(() => {
     const handleScroll = () => {
@@ -79,6 +68,10 @@ export default function Head({ hash }: { hash: Router }) {
     };
   }, [shuldScollTo]);
 
+  useEffect(() => {
+    const ele = document.getElementById("content");
+    isOpen ? ele?.classList.add("blur")! : ele?.classList.remove("blur")!;
+  }, [isOpen]);
   return (
     <>
       <HeadStyles

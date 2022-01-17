@@ -33,7 +33,7 @@ const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen}, ref) =>
   (
     <StylesMenu
       bgColor={"brand.800"}
-      shadow={"2xl"}
+      boxShadow={"inner"}
       isopen={isopen}
       display={[null, null, null, "none"]}
       ref={ref}
