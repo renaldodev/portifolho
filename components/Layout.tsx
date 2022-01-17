@@ -46,6 +46,7 @@ export default function Layout({ children, location }: ILayoutProps) {
         <>
           <Head hash={location} />
           <Container
+            id="content"
             as="main"
             maxW={["container.lg"]}
             px={["20px", "50px", "65px", null]}

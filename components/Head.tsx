@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Flex, Image, useOutsideClick } from "@chakra-ui/react";
 import Link from "next/link";
 import { Router } from "next/router";
-import HeadNext from 'next/head'
+import HeadNext from "next/head";
 import { Nav, HamburgerMenuButton, Menu } from "@components/index";
 import { useScrollDirection, useClickedOutside } from "@hooks/index";
 import { DIRECTION } from "@hooks/useScrollDirection";
@@ -49,16 +49,23 @@ export default function Head({ hash }: { hash: Router }) {
   const headHeight = ref.current?.clientHeight;
   const [isOpen, setIsOpen] = useState(false);
   const refmenu = createRef<HTMLDivElement>();
-   useClickedOutside(refmenu,()=>setIsOpen(false))
- 
+  const ele = document.getElementById("content");
 
-  console.log(isOpen);
+  useClickedOutside(refmenu, () => {
+    ele?.classList.remove("blur")!;
+    setIsOpen(false);
+  });
 
   const toggleMenu = () => {
-    if(isOpen){
+    if (isOpen) {
+      
+      ele?.classList.remove("blur")!;
+
       setIsOpen(false);
-    }else{
-      setIsOpen(true)
+    } else {
+      ele?.classList.add("blur")!;
+
+      setIsOpen(true);
     }
   };
   useEffect(() => {
@@ -78,19 +85,15 @@ export default function Head({ hash }: { hash: Router }) {
         px="40px"
         zIndex={"100"}
         directionscroll={direction}
-        shouldscroll={shuldScollTo?1:0}
+        shouldscroll={shuldScollTo ? 1 : 0}
         ref={ref}
         headheight={headHeight}
       >
-        
         <Link href="/">
           <Image src="/logo.svg" alt="Logo" maxW={"60px"} cursor="pointer" />
         </Link>
         <Nav path={hash.asPath} />
-        <HamburgerMenuButton
-          isopen={isOpen ? 1 : 0}
-          onClick={toggleMenu}
-        />
+        <HamburgerMenuButton isopen={isOpen ? 1 : 0} onClick={toggleMenu} />
       </HeadStyles>
       <Menu isopen={isOpen ? 1 : 0} ref={refmenu} />
     </>

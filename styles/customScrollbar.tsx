@@ -29,6 +29,13 @@ export default function CustomScrollBar() {
                 background: #35858B; 
                 border-radius:3px; 
             }
+
+            .blur >* {
+              filter:blur(5px) brightness(0.7);
+              transition:all 100ms ease-in-out;
+              pointer-events: none;
+              user-select: none;
+              }
             `}
     />
   );
