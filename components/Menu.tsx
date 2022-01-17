@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Flex } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import {forwardRef } from "react";
+import Nav from "./Nav";
 
 const StylesMenu = styled(Flex)<{ isopen?: number }>`
   position: fixed;
@@ -28,19 +29,19 @@ const StylesMenu = styled(Flex)<{ isopen?: number }>`
 
 interface IMenuProps  {
   isopen: number;
+  path:string
 }
-const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen}, ref) => 
+const Menu = forwardRef<HTMLDivElement,IMenuProps>(({isopen,path}, ref) => 
   (
     <StylesMenu
-      bgColor={"brand.800"}
-      boxShadow={"inner"}
+      bgColor={"brand.300"}
+      boxShadow={"xl"}
       isopen={isopen}
       display={[null, null, null, "none"]}
       ref={ref}
     >
-      <h1>Rui</h1>
+      <Nav path={path} isMobile={1}/>
 
-    
     </StylesMenu>
   ));
 

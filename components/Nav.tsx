@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Flex, Link as LinkChakra } from "@chakra-ui/react";
+import { Flex, Link as LinkChakra ,OrderedList} from "@chakra-ui/react";
 import Link from "next/link";
 import { websiteData } from "@settings/websiteData";
 import { ReactNode } from "react";
@@ -50,16 +50,16 @@ const NavLink = ({
   </StyledNavLink>
 );
 
-export default function Nav({ path }: { path: string }) {
+export default function Nav({ path,isMobile }: { path: string ,isMobile:number}) {
   return (
-    <StylesNav display={["none", null, null, "flex"]}>
-      <ol>
+    <StylesNav display={(isMobile===1)?['flex',null,null,'none']:['none',null,null,'flex']}>
+      <OrderedList display={'flex'} flexDir={['column',null,null,'row']}>
         {websiteData.navLinks.map(({ name, href }, key) => (
           <NavLink key={key} to={href} isActive={href === path}>
             {name}
           </NavLink>
         ))}
-      </ol>
+      </OrderedList>
     </StylesNav>
   );
 }

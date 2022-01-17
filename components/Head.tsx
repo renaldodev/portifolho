@@ -85,10 +85,10 @@ export default function Head({ hash }: { hash: Router }) {
         <Link href="/">
           <Image src="/logo.svg" alt="Logo" maxW={"60px"} cursor="pointer" />
         </Link>
-        <Nav path={hash.asPath} />
+        <Nav path={hash.asPath} isMobile={0} />
         <HamburgerMenuButton isopen={isOpen ? 1 : 0} onClick={toggleMenu} />
       </HeadStyles>
-      <Menu isopen={isOpen ? 1 : 0} ref={refmenu} />
+      <Menu isopen={isOpen ? 1 : 0} ref={refmenu} path={hash.asPath} />
     </>
   );
 }
