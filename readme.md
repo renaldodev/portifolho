@@ -2,3 +2,6 @@
 
 ### Tecs
 
+- Javascript
+- Nextjs
+- Styled Components
