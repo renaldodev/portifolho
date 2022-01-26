@@ -5,3 +5,4 @@
 - Javascript
 - Nextjs
 - Styled Components
+- Chakra-ui
