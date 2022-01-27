@@ -6,3 +6,4 @@
 - Nextjs
 - Styled Components
 - Chakra-ui
+- reactjs
