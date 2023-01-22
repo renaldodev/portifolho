@@ -9,7 +9,7 @@ export default function useScrollDirection(
   initialDirection: DIRECTION | null
 ) {
   const [direction, setDirection] = useState<DIRECTION>(
-    initialDirection ? initialDirection : DIRECTION.DOWN
+    initialDirection??DIRECTION.DOWN
   );
   useEffect(() => {
     let lastScrollY = window.scrollY;
